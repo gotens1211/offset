@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624093038) do
+ActiveRecord::Schema.define(version: 20160625192651) do
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "Subject_name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "subjects_tests", id: false, force: :cascade do |t|
+    t.integer "tests_id"
+    t.integer "subjects_id"
+  end
+
+  add_index "subjects_tests", ["subjects_id"], name: "index_subjects_tests_on_subjects_id"
+  add_index "subjects_tests", ["tests_id"], name: "index_subjects_tests_on_tests_id"
+
+  create_table "tests", force: :cascade do |t|
+    t.string   "Test_name"
+    t.string   "Test_code"
+    t.text     "Test_desc"
+    t.integer  "Test_timelimit"
+    t.integer  "Test_totalsubjects"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
