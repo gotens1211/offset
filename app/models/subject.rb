@@ -1,3 +1,4 @@
 class Subject < ActiveRecord::Base
-  has_and_belongs_to_many :tests
+  has_many :test_subjects
+  has_many :tests, through: :test_subjects
 end
