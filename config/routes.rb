@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+
+
   root 'home#index'
 
   resources :tests
+  resources :subjects
+  resources :questions
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
