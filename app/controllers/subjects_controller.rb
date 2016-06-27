@@ -3,6 +3,10 @@ class SubjectsController < ApplicationController
     @subject = Subject.all
   end
 
+  def new
+	 @subject = Subject.new
+	end
+
   def show
     @subject = Subject.find(params[:id])
   end

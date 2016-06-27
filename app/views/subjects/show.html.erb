@@ -1,3 +1,18 @@
-<h1><%= @subject.Subject_name %></h1>
-<h2>Description</h2>
-<%= link_to "Begin test", questions_path, class: "btn" %>
+<div class="container">
+
+<h1 align="center"><%= @subject.Subject_name %></h1>
+  <% @subject.questions.each do |s| %>
+  <%= form_for(:ans)  do |f| %>
+  <div class="well">
+    Q.<%= s.questions %><br>
+    <%= f.radio_button :ans, s.option1 %><%= s.option1 %><br>
+    <%= f.radio_button :ans, s.option2 %><%= s.option2 %><br>
+    <%= f.radio_button :ans, s.option3 %><%= s.option3 %><br>
+    <%= f.radio_button :ans, s.option4 %><%= s.option4 %><br>
+  </div>
+
+<%= f.submit "Submit", class: "btn btn-success" %>
+<% end %>
+<% end %>
+
+</div>
