@@ -13,7 +13,8 @@ class SubjectsController < ApplicationController
 
   def check
     @score = 0
-
+    ss=params[:abc][:subject_id].to_i
+    @subject = Subject.find(ss)
     ans_array = params[:ans]
     ans_array.each do |option|
       qs = Question.find(option.first.to_i)
